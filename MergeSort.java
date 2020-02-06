@@ -1,17 +1,5 @@
 import java.util.*;
 class MergeSort{
-  public MergeSort(){
-    
-  }
-  public ArrayList<Double> split(ArrayList<Double> a, ArrayList<Double> b){
-    if(a.size() > 1){
-      
-    }
-    return a;
-
-
-  }
-
   public ArrayList<Double> sort(ArrayList<Double> userArr){
     ArrayList<Double> a = new ArrayList<Double>();
     ArrayList<Double> b = new ArrayList<Double>();

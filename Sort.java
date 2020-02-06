@@ -12,6 +12,7 @@ class Sort {
       while(fileScanner.hasNextDouble()){
         doubles.add(fileScanner.nextDouble());
       }
+      fileScanner.close();
     }
     catch(Exception e){
       System.out.println("file path not accurate");
@@ -20,7 +21,11 @@ class Sort {
 
   }
 
-  public double[] bubbleSort(){
+  public ArrayList<Double> getUnSorted(){
+    return doubles;
+  }
+
+  public ArrayList<Double> bubbleSort(){
     BubbleSort myBS = new BubbleSort();
     return myBS.sort(doubles);
   }
