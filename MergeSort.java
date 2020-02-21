@@ -34,15 +34,19 @@ class MergeSort{
     while(lP < left.size() || rP < right.size()){
       if(lP < left.size() && rP < right.size()){
         if (left.get(lP) < right.get(rP)){
-          result.set(reP++, left.get(lP));
-
+          result.set(reP, left.get(lP));
+          reP++;
         }
         else{
-          result.set(reP++, right.get(rP++));
+          result.set(reP, right.get(rP));
+          reP++;
+          rP++;
         }
       }
       else if(lP < left.size()){
-        result.set(reP++, left.get(lP++));
+        result.set(reP, left.get(lP));
+        reP++;
+        lP++;
       }
       else if(rP < right.size()){
         result.set(reP, right.get(rP));
