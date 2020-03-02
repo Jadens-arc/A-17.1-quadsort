@@ -1,58 +1,39 @@
 import java.util.*;
 class MergeSort{
-  public ArrayList<Double> sort(ArrayList<Double> userArr){
-    if(userArr.size() == 1){
-      return userArr;
+  public ArrayList<Double> merge(ArrayList<Double> left, ArrayList<Double> right){
+    ArrayList<Double> result = new ArrayList<Double>();
+    int i = 0;
+    int j = 0;
+
+    while(i < userArr.size() && j < userArr.size()){
+      if(left.get(i) <= right.get(j)){
+        result.add(left.get(i));
+        i ++;
+      }
+      else{
+        result.add(right.get(j));
+        j ++;
+      }
     }
+    ArrayList<Double> newRight = right.subList(j, right.size() - 1);
+    ArrayList<Double> newLeft = left.subList(i, right.size() - 1);
 
-    int middle = userArr.size() / 2;
+    result.addAll(newLeft);
+    result.addAll(newRight);
 
-    ArrayList<Double> leftArr = new ArrayList<Double>();
-    ArrayList<Double> rightArr = new ArrayList<Double>();
-
-    for(int i = 0; i < middle; i ++){
-      leftArr.add(userArr.get(i));
-    }
-
-    for(int i = middle; i < userArr.size(); i ++){
-      rightArr.add(userArr.get(i));
-    }
-
-    
-
-    ArrayList<Double> left = sort(leftArr);
-    ArrayList<Double> right = sort(rightArr);
-    ArrayList<Double> result = merge(left, right);
     return result;
   }
 
-  public ArrayList<Double> merge(ArrayList<Double> left, ArrayList<Double> right){
-    ArrayList<Double> result = new ArrayList<Double>();
-
-    int lP = rP = reP = 0;
-    
-    while(lP < left.size() || rP < right.size()){
-      if(lP < left.size() && rP < right.size()){
-        if (left.get(lP) < right.get(rP)){
-          result.set(reP, left.get(lP));
-          reP++;
-        }
-        else{
-          result.set(reP, right.get(rP));
-          reP++;
-          rP++;
-        }
-      }
-      else if(lP < left.size()){
-        result.set(reP, left.get(lP));
-        reP++;
-        lP++;
-      }
-      else if(rP < right.size()){
-        result.set(reP, right.get(rP));
-      }
+  public ArrayList<Double> sort(ArrayList<Double> userArr){
+    if(userArr.size() <= 1){
+      return userArr;
     }
 
-    return result;
+    int mid = (int) userArr.size() / 2;
+    ArrayList<Double> left = MergeSort(userArr.subList(0, mid));
+    ArrayList<Double> right = MergeSort(userArr.subList(mid, userArr.size() - 1));
+    System.out.println(left.toString());
+    System.out.println(right.toString());
+    return merge(left, right);
   }
 }
